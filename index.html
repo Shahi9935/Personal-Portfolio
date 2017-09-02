@@ -1,4 +1,4 @@
-<DOCTYPE! html>
+	<DOCTYPE! html>
 <html>
 <head>
   <title> SHAHI's Portfolio</title>
@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="css.css"/>
 
 </head>
-<body class="container-fluid">
+<body class="container-fluid" data-spy="scroll" data-target=".navbar" data-offset="50">
   <!--__________________________My NAV BAR_________________-->
   <nav class="navbar navbar-toggleable-md navbar-inverse bg-warning text-white fixed-top">
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#mynav"><span class="navbar-toggler-icon"></span></button>
@@ -124,6 +124,25 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
     <script>
+	$(document).ready(function(){
+
+  $('body').scrollspy({target: ".navbar", offset: 50});   
+
+  $("#mynav a").on('click', function(event) {
+    if (this.hash !== "") {
+      
+      event.preventDefault();
+      var hash = this.hash;      
+      $('html, body').animate({
+        scrollTop: $(hash).offset().top
+      }, 800, function(){
+   
+        
+        window.location.hash = hash;
+      });
+    }  
+  });
+});
     $('.carousel').carousel({
       interval: 3000,
       keyboard: true,
